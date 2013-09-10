@@ -34,6 +34,7 @@ type OauthProxy struct {
 	SignInMessage      string
 	HtpasswdFile       *HtpasswdFile
 	serveMux           *http.ServeMux
+	basicAuthPass	   string
 }
 
 func NewOauthProxy(proxyUrls []*url.URL, clientID string, clientSecret string, validator func(string) bool) *OauthProxy {
@@ -323,7 +324,7 @@ func (p *OauthProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	// At this point, the user is authenticated. proxy normally
 	if *passBasicAuth {
-		req.SetBasicAuth(user, "")
+		req.SetBasicAuth(user, p.basicAuthPass)
 		req.Header["X-Forwarded-User"] = []string{user}
 	}
 

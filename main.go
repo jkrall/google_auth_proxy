@@ -20,6 +20,7 @@ var (
 	clientID                = flag.String("client-id", "", "the Google OAuth Client ID: ie: \"123456.apps.googleusercontent.com\"")
 	clientSecret            = flag.String("client-secret", "", "the OAuth Client Secret")
 	passBasicAuth           = flag.Bool("pass-basic-auth", true, "pass HTTP Basic Auth information to upstream")
+	basicAuthPass		= flag.String("basic-auth-pass", "", "default password for basic auth")
 	htpasswdFile            = flag.String("htpasswd-file", "", "additionally authenticate against a htpasswd file. Entries must be created with \"htpasswd -s\" for SHA encryption")
 	cookieSecret            = flag.String("cookie-secret", "", "the seed string for secure cookies")
 	cookieDomain            = flag.String("cookie-domain", "", "an optional cookie domain to force cookies to")
